@@ -1,0 +1,20 @@
+{
+  "name": "weather-api-cypress",
+  "version": "1.0.0",
+  "description": "Cypress API test suite for Weather AI endpoint",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open --e2e --browser chrome",
+    "cy:run": "cypress run --e2e"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^14.0.0",
+    "cypress-mochawesome-reporter": "^3.8.0",
+    "yup": "^1.3.0",
+    "dotenv": "^16.3.1",
+    "lodash": "^4.17.21"
+  }
+}

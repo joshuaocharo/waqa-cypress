@@ -1,0 +1,37 @@
+[
+  {
+    "description": "T-0005 Missing Authorization header returns 401",
+    "headerOverride": {
+      "content-type": "application/json",
+      "accept": "application/json"
+    },
+    "expectedStatus": 401,
+    "expectedError": {
+      "error": "Missing Authorization header. Use: Bearer <api_key>"
+    }
+  },
+  {
+    "description": "T-0006 Invalid Bearer token returns 401",
+    "headerOverride": {
+      "content-type": "application/json",
+      "accept": "application/json",
+      "Authorization": "Bearer invalid_token_value"
+    },
+    "expectedStatus": 401,
+    "expectedError": {
+      "error": "Invalid or revoked API key."
+    }
+  },
+  {
+    "description": "T-0007 Empty Bearer token returns 401",
+    "headerOverride": {
+      "content-type": "application/json",
+      "accept": "application/json",
+      "Authorization": "Bearer "
+    },
+    "expectedStatus": 401,
+    "expectedError": {
+      "error": "Missing Authorization header. Use: Bearer <api_key>"
+    }
+  }
+]
