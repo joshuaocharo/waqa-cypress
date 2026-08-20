@@ -32,10 +32,7 @@ npm run cy:run
 
 ## Reporting
 
-The suite uses [`cypress-mochawesome-reporter`](https://www.npmjs.com/package/cypress-mochawesome-reporter). It's wired up in three places:
-
-- [cypress.config.js](cypress.config.js) — `reporter` + `reporterOptions` at the top level, and `require('cypress-mochawesome-reporter/plugin')(on)` inside `setupNodeEvents`.
-- [cypress/support/e2e.js](cypress/support/e2e.js) — `import 'cypress-mochawesome-reporter/register'` so per-test hooks fire.
+The suite uses [`cypress-mochawesome-reporter`](https://www.npmjs.com/package/cypress-mochawesome-reporter).
 
 After a headless run:
 
@@ -51,8 +48,6 @@ The dashboard renders:
 - Per-test request duration, assertion detail, and any thrown stack traces
 - Embedded screenshots on failures (via `embeddedScreenshots: true` + `inlineAssets: true`, so the single HTML file is self-contained and shareable)
 
-Report options live in [cypress.config.js](cypress.config.js:5) — tweak `charts`, `saveAllAttempts`, or `reportDir` there.
-
 ## Test strategy
 
 - **Positive + negative contexts.** Positive tests (`T-0001..T-0004`) prove the happy path — status, schema shape, echoed params, and unit switching. Negative tests (`T-01xx`) cover auth failures and invalid input.
@@ -67,7 +62,7 @@ Report options live in [cypress.config.js](cypress.config.js:5) — tweak `chart
 
 ## CI
 
-GitHub Actions workflow lives at [.github/workflows/cypress.yml](.github/workflows/cypress.yml). It runs on push to `main` and on every pull request.
+GitHub Actions workflow lives at [.github/workflows/cypress.yml](.github/workflows/cypress.yml). It runs on push to `main` or by the user on the repository's Actions page under Cypress Tests workflow.
 
 Configure the repo (Settings → Secrets and variables → Actions):
 
@@ -91,10 +86,10 @@ cypress/
     InvalidAuthTestData.json
   schema/weather/CurrentWeatherResponse.js  # Yup schema
   support/
-    e2e.js                                  # import hub
-    commands.js                             # generic helpers (placeholder)
-    api/weather/api_weather.js              # cy.getCurrentWeather(...)
-    api/assertion/api_assertion.js          # cy.assertAPIResponse(...)
+    e2e.js                                  
+    commands.js                            
+    api/weather/api_weather.js              
+    api/assertion/api_assertion.js          
   utils/ObjectUtils.js
 .gitignore
 cypress.config.js
